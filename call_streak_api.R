@@ -15,7 +15,9 @@ library(httr)
 library(jsonlite)
 library(lubridate)
 library(stringr)
-library(dplyr)         # group, filter and manipulate dataframes
+library(dplyr)     # group, filter and manipulate dataframes
+library(config)    # for loading api credentials hidden in a config.yml file  
+
 
 
 options(stringsAsFactors = FALSE)
@@ -76,7 +78,7 @@ getUserName <- function(userKey) {
         users <- fromJSON(this.raw.content)
         userName <- users$displayName
 
-    	View(users.df) # returns "bob@kamihq.com"
+    	View(users.df) # returns e.g. "bob@xyz.com"
 
     } else{
         if(  raw.result$status_code == 400 ) {
